@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.lisbon.practice.model.MENUS;
 
 @Repository
-public interface MenusReposotory extends JpaRepository<MENUS, Long> {
+public interface MenusRepository extends JpaRepository<MENUS, Long> {
+	
 
 }
