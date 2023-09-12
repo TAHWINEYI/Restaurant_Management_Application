@@ -1,6 +1,5 @@
 package com.lisbon.practice.model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,13 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class USERS implements Serializable {
+public class USERS {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7705975719897589630L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "USER_ID")
