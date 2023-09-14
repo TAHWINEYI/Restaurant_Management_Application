@@ -23,9 +23,17 @@ import lombok.NoArgsConstructor;
 public class ORDERS {
  
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name= "ORDERS_ID", insertable = false, updatable = false)
 	private long orders_id;
+    
+    @ManyToOne
+    @JoinColumn(name="users_id", nullable=false)
+    private USERS users;
+    
+    @ManyToOne
+    @JoinColumn(name="restaurants_id", nullable=false)
+    private RESTAURANTS restaurants;
    
 	@Column(name = "STATUS" , length = 20 , nullable =false)
 	private String Status;
@@ -41,4 +49,8 @@ public class ORDERS {
 	@ManyToOne(optional = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "ORDERS_ID", insertable = false, updatable = false)
 	private RESTAURANTS restaurants_id;
+	
+	@ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORDERS_ID", insertable = false, updatable = false)
+	private RESTAURANTS menus_id;
 }

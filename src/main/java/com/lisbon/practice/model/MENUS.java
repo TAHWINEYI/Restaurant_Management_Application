@@ -7,7 +7,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,10 +23,18 @@ import lombok.NoArgsConstructor;
 public class MENUS {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "MENUS_ID")
 	private long menus_id;
 	
+	
+	@ManyToOne
+    @JoinColumn(name="users_id", nullable=false)
+    private USERS users;
+	
+	@ManyToOne
+    @JoinColumn(name="restaurants_id", nullable=false)
+    private RESTAURANTS restaurants;
 	
 	@Column(name = "NAME" , length = 100 , nullable =false)
 	private String name;
@@ -46,7 +53,5 @@ public class MENUS {
 	@Column(name = "UPDATED_AT" , nullable =false)
 	private LocalDateTime updated_at;
 	
-	@ManyToOne(optional = true, fetch = FetchType.LAZY)
-    @JoinColumn(name = "MENUS_ID", insertable = false, updatable = false)
-	private RESTAURANTS restaurants_id;
+	
 }

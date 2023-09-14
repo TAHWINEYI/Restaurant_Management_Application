@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class USER_REGISTRATION {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "REGISTRATION_ID")
 	private long registration_id;
 	

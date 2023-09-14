@@ -2,6 +2,8 @@ package com.lisbon.practice.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Set;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
@@ -9,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,9 +29,15 @@ public class RESTAURANTS implements Serializable{
 
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "RESTAURANT_ID")
 	private long restaurant_id; 
+	
+	@OneToMany(mappedBy="restaurants")
+	private Set<MENUS> menus;
+	
+	@OneToMany(mappedBy="restaurants")
+	private Set<ORDERS> orders;
 	
 	@Column(name = "NAME" , length = 100 , nullable =false)
 	private String name;
